@@ -9,7 +9,8 @@ var getElementsByClassName = function (className) {
   var result = [];
   
   var recursor = function(element) {
-    // push elements to result
+    if (_.contains(element.classList, className)) result.push(element);
+    _.each(element.childNodes, recursor);
   }
   recursor(document.body);
 
