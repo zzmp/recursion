@@ -6,4 +6,12 @@
 // But in stead we're going to implement it from scratch:
 var getElementsByClassName = function (className) {
   // your code here
+  var result = [];
+  
+  var recursor = function(element) {
+    // push elements to result
+  }
+  recursor(document.body);
+
+  return result;
 };
