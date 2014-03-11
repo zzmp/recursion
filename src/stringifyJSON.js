@@ -5,13 +5,15 @@
 var stringifyJSON = function (obj) {
   // your code goes here
   if (typeof obj === 'object') {
-    var listElements = function(list, element) {
-      return (list ? list + ',' : '') + stringifyJSON(element);
+    var listElements = function(list, element, key) {
+      return (list ? list + ',' : '') + (typeof key === 'string' ? stringifyJSON(element, key) : stringifyJSON(element));
     }
 
     var bookend = Array.isArray(obj) ? ['[',']'] : ['{','}'];
     return bookend[0] + _.reduce(obj, listElements, '') + bookend[1];
   } else {
     // Data
+    var key = arguments[1];
+    return (key ? stringifyJSON(key) + ':' : '') + (typeof obj === 'string' ? "'" + obj + "'" : obj);
   }
 };
