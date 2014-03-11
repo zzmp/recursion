@@ -5,8 +5,13 @@
 var stringifyJSON = function (obj) {
   // your code goes here
   if (typeof obj === 'object') {
+    var listElements = function(list, element) {
+      return (list ? list + ',' : '') + stringifyJSON(element);
+    }
+
     Array.isArray(obj) ? {
       // Array
+      _.reduce(obj, listElements, '');
     } :
     {
       // Object
