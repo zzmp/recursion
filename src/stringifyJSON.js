@@ -18,6 +18,15 @@ var stringifyJSON = function (obj) {
     return listKey(key) + bookend[0] + _.reduce(obj, listElements, '') + bookend[1];
   } else {
     // Data
-    return listKey(key) + (typeof obj === 'string' ? '"' + obj + '"' : obj);
+    var formatType = function(obj) {
+      if (typeof obj === 'string') return '"' + obj + '"';
+      else if (typeof obj === 'number') return obj;
+      else if (typeof obj === 'boolean') return obj;
+      else if (typeof obj === 'object') return 'null'; // null case
+      else if (typeof obj === 'undefined') return 'null';
+      // object/array are covered in previous block
+    }
+
+    return listKey(key) + formatType(obj);
   }
 };
