@@ -4,7 +4,7 @@
 // but you don't so you're going to have to write it from scratch:
 var stringifyJSON = function (obj) {
   // your code goes here
-  if (typeof obj === 'object') {
+  if (obj && typeof obj === 'object') {
     var listElements = function(list, element, key) {
       return (list ? list + ',' : '') + (typeof key === 'string' ? stringifyJSON(element, key) : stringifyJSON(element));
     }
@@ -14,6 +14,6 @@ var stringifyJSON = function (obj) {
   } else {
     // Data
     var key = arguments[1];
-    return (key ? stringifyJSON(key) + ':' : '') + (typeof obj === 'string' ? "'" + obj + "'" : obj);
+    return (key ? stringifyJSON(key) + ':' : '') + (typeof obj === 'string' ? '"' + obj + '"' : obj);
   }
 };
