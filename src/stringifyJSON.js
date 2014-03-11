@@ -9,13 +9,8 @@ var stringifyJSON = function (obj) {
       return (list ? list + ',' : '') + stringifyJSON(element);
     }
 
-    Array.isArray(obj) ? {
-      // Array
-      _.reduce(obj, listElements, '');
-    } :
-    {
-      // Object
-    };
+    var bookend = Array.isArray(obj) ? ['[',']'] : ['{','}'];
+    return bookend[0] + _.reduce(obj, listElements, '') + bookend[1];
   } else {
     // Data
   }
