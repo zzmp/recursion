@@ -4,7 +4,7 @@
 // but you don't so you're going to have to write it from scratch:
 var stringifyJSON = function (obj) {
   // your code goes here
-  if (typeof obj === 'undefined' || typeof obj === 'function') return;
+  if (typeof obj === 'undefined') return;
 
   var recursor = function(obj, key) {
     var listKey = function(key) {
@@ -26,6 +26,7 @@ var stringifyJSON = function (obj) {
         else if (typeof obj === 'boolean') return obj;
         else if (typeof obj === 'object') return 'null'; // null case
         else if (typeof obj === 'undefined') return 'null';
+        else if (typeof obj === 'function') throw new Error('JSON does not support encoding functions');
         // object/array are covered in previous block
       }
 
