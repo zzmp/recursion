@@ -105,3 +105,8 @@ var arrayWithInvalidStrings = [
   '["foo", "bar"',
   '["foo", "bar\\"]'
 ];
+
+//arrayWithValidElements is not defined
+arrayWithValidElements = [ stringifiableValues, extraCreditStrings ];
+//objectWithInvalidAttributes is not defined
+objectWithInvalidAttributes = [ nonStringifiableValues, arrayWithInvalidStrings ];
