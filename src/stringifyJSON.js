@@ -21,7 +21,12 @@ var stringifyJSON = function (obj) {
     } else {
       // Data
       var formatType = function(obj) {
-        if (typeof obj === 'string') return '"' + obj + '"';
+        var formatString = function(str) {
+          // remove escaped characters (this is not comprehensive, nor is it ideal regexp)
+          return str.replace(/\\/g,'\\\\').replace(/\"/g,'\\\"').replace(/\r/g,'\\r').replace(/\t/g,'\\t').replace(/\n/g,'\\n');;
+        };
+
+        if (typeof obj === 'string') return '"' + formatString(obj) + '"';
         else if (typeof obj === 'number') return obj;
         else if (typeof obj === 'boolean') return obj;
         else if (typeof obj === 'object') return 'null'; // null case
