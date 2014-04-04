@@ -13,6 +13,7 @@ var stringifyJSON = function (obj) {
 
     if (obj && typeof obj === 'object') {
       var listElements = function(list, element, key) {
+        if (typeof element === 'function' || typeof element === 'undefined') return list;
         return (list ? list + ',' : '') + (typeof key === 'string' ? recursor(element, key) : recursor(element));
       }
 
@@ -30,7 +31,6 @@ var stringifyJSON = function (obj) {
         else if (typeof obj === 'number') return obj;
         else if (typeof obj === 'boolean') return obj;
         else if (typeof obj === 'object') return 'null'; // null case
-        else if (typeof obj === 'undefined') return 'null';
         // object/array are covered in previous block
       }
 
