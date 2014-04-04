@@ -26,7 +26,6 @@ var stringifyJSON = function (obj) {
         else if (typeof obj === 'boolean') return obj;
         else if (typeof obj === 'object') return 'null'; // null case
         else if (typeof obj === 'undefined') return 'null';
-        else if (typeof obj === 'function') throw new Error('JSON does not support encoding functions');
         // object/array are covered in previous block
       }
 
